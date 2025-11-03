@@ -1,0 +1,42 @@
+# Program: Dice Roll Simulator using NumPy
+
+import numpy as np
+
+def roll_dice(num_dice=1, sides=6):
+    """
+    Function to roll 'num_dice' dice with 'sides' sides.
+    Returns a NumPy array of random integers.
+    """
+    return np.random.randint(1, sides + 1, size=num_dice)
+
+def display_results(rolls):
+    """
+    Function to display dice roll results and statistics.
+    """
+    print("\n🎲 Dice Roll Results:", rolls)
+    print("Sum of rolls:", np.sum(rolls))
+    print("Average of rolls:", np.mean(rolls))
+    print("Highest roll:", np.max(rolls))
+    print("Lowest roll:", np.min(rolls))
+
+def main():
+    print("=== 🎲 Random Dice Roll Simulator using NumPy ===")
+
+    while True:
+        try:
+            num_dice = int(input("\nEnter the number of dice to roll: "))
+            sides = int(input("Enter the number of sides per die (default 6): ") or 6)
+        except ValueError:
+            print("Invalid input! Please enter integers only.")
+            continue
+
+        rolls = roll_dice(num_dice, sides)
+        display_results(rolls)
+
+        choice = input("\nDo you want to roll again? (y/n): ").lower()
+        if choice != 'y':
+            print("\nThank you for using the Dice Simulator! 🎲")
+            break
+
+if _name_ == "_main_":
+    main()
